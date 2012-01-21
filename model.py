@@ -26,6 +26,7 @@ class Player(Base):
     cslid = Column(Integer)
 
     # character.123
+    name = Column(String(50))
     character = Column(String(50))
     code = Column(Integer)
     # csl id for team
@@ -75,6 +76,7 @@ class Player(Base):
     tteam = Column(Integer)
     rteam = Column(Integer) #??
 
+    #time = Column(String(50)) # timestamp?
 
 class Team(Base):
 
@@ -99,4 +101,6 @@ class Team(Base):
     protoss = Column(Integer)
     terran = Column(Integer)
     random = Column(Integer)
+
+    #time = Column(String(50)) 
 
