@@ -10,13 +10,23 @@ DB = 'csl'
 USER = 'root'
 PW = ''
 
-def create_session(server=SERVER, db=DB, user=USER, pw=PW):
-
+def get_engine(server=SERVER, db=DB, user=USER, pw=PW):
     engine = create_engine("mysql://%s:%s@%s/%s" \
             % (user, pw, server, db))
+    return engine
+
+def create_session(server=SERVER, db=DB, user=USER, pw=PW, drop=False):
+    engine = get_engine(SERVER, DB, USER, PW)
+    if drop:
+        Base.metadata.drop_all(engine)
     # creates tables if necessary
     Base.metadata.create_all(engine)
     return sessionmaker(bind=engine)()
+
+def drop_all():
+    engine = get_engine(SERVER, DB, USER, PW)
+    Base.metadata.drop_all(engine)
+
 
 class Player(Base):
 
@@ -34,7 +44,7 @@ class Player(Base):
 
     # main race listed on CSL
     race = Column(String(10))
-    league = Column(String(10))
+    league = Column(String(16))
     points = Column(Integer)
     
     # total 1v1 games played
@@ -101,6 +111,4 @@ class Team(Base):
     protoss = Column(Integer)
     terran = Column(Integer)
     random = Column(Integer)
-
-    #time = Column(String(50)) 
 
