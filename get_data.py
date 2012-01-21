@@ -34,6 +34,14 @@ def get_all_schools():
     return ids
 
 def get_all_data(drop=True):
+    """
+    runs scraper on all valid CSL schools, getting new player/team data for db
+
+    args:
+        drop: if True, drops all tables (for complete db refresh)
+    returns:
+        nothing
+    """
 
     if drop:
         # drop tables in csl table
