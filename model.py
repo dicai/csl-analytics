@@ -1,3 +1,15 @@
+"""
+model.py
+
+author: Diana Cai <caidcai@gmail.com>
+
+sqlalchemy ORM containing following tables:
+    * player: all info regarding a player
+    * team: info for CSL team
+
+when creating session, creates all tables if not created
+"""
+
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
