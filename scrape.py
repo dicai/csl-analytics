@@ -306,7 +306,13 @@ def insert_players(players, teamnum, teamname):
             ptotal = int(pgames[0]) + int(pgames[1]) 
             ttotal = int(tgames[0]) + int(tgames[1])
 
-            assert int(games) == int(ztotal + ptotal + ttotal)
+            try:
+                # this doesn't work as an equality because CSL website doesn't
+                # account for random players in their record
+                assert int(games) >= int(ztotal + ptotal + ttotal)
+            except:
+                print player.character
+                sys.stdout.flush()
 
             zwins = int(zgames[0])
             pwins = int(pgames[0])
@@ -408,6 +414,8 @@ def insert_players(players, teamnum, teamname):
                     random=random))
 
     session.commit()
+
+    session.close()
 
 
 if __name__=='__main__':
