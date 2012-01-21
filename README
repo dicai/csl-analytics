@@ -1,0 +1,9 @@
+sample output in ./data/ directory
+
+current goals:
+* integrate HTML parser / remove player object step
+* SQLAlchemy queries on mysql db
+* grab additional stats using sc2ranks API
+* automated way to scrape data for all schools
+* make web visualization for data
+* add user interface for generating output (search for school, etc)
