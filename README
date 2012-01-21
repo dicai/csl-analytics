@@ -1,6 +1,6 @@
 sample output in ./data/ directory
 
-current goals:
+current goals (see issues):
 * integrate HTML parser / remove player object step
 * SQLAlchemy queries on mysql db
 * grab additional stats using sc2ranks API
