@@ -25,6 +25,7 @@ RANDOM = 'R'
 SAVEDIR = './data'
 
 session = model.create_session()
+pylab.rcParams['font.size'] = 9.0
 
 def plot_single(teamnum):
 
@@ -139,7 +140,7 @@ def plot_teams(teamnum):
             text += 'R: ' + str(r[key])
         labels.append(text)
         fracs.append(100.0 * teamgames[key] / total_matches)
-        c.append(pylab.cm.bone_r(i * (200/num_players)))
+        c.append(pylab.cm.bone_r(i * (256/num_players)))
 
     explode = [0] * len(labels)
     pylab.pie(fracs, explode=explode, \
@@ -153,4 +154,5 @@ if __name__=='__main__':
     plot_single(teamnum)
     plot_single_maps(teamnum)
     plot_teams(teamnum)
+    plot_ace(teamnum)
 
